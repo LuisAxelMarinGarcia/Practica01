@@ -1,0 +1,20 @@
+{
+    "name": "api-gateway",
+    "version": "1.0.0",
+    "description": "API Gateway for Orders and Inventory Services",
+    "main": "src/server.js",
+    "scripts": {
+        "start": "node src/server.js",
+        "test": "mocha tests/**/*.test.js"
+    },
+    "dependencies": {
+        "axios": "^0.21.1",
+        "dotenv": "^16.4.5",
+        "express": "^4.17.1",
+        "morgan": "^1.10.0"
+    },
+    "devDependencies": {
+        "chai": "^4.3.4",
+        "mocha": "^8.4.0"
+    }
+}
