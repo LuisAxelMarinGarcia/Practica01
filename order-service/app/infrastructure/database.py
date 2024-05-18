@@ -7,12 +7,14 @@ from urllib.parse import quote_plus
 
 load_dotenv()
 
-username = 'postgres'
-password = 'meh'
+username = 'root'
+password = 'password'  # Cambia esto a la nueva contraseña de tu usuario root
 escaped_password = quote_plus(password)
 database_name = 'prueba'
+host = 'localhost'
+port = '3306'  # Puerto predeterminado de MySQL
 
-DATABASE_URL = f'postgresql://{username}:{escaped_password}@localhost:5432/{database_name}'
+DATABASE_URL = f'mysql+mysqlconnector://{username}:{escaped_password}@{host}:{port}/{database_name}'
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
