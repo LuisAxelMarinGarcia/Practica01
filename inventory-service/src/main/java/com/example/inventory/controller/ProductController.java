@@ -30,4 +30,10 @@ public class ProductController {
     public ResponseEntity<List<Product>> listProducts() {
         return ResponseEntity.ok(productService.listProducts());
     }
+
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<Void> updateProductStatus(@PathVariable Long id, @RequestBody String status) {
+        productService.updateProductStatus(id, status);
+        return ResponseEntity.noContent().build();
+    }
 }

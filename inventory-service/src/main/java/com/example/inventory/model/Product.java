@@ -1,6 +1,5 @@
 package com.example.inventory.model;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "products") // Asegúrate de que el nombre de la tabla sea correcto
+@Table(name = "products") 
 public class Product {
 
     @Id
@@ -19,7 +18,7 @@ public class Product {
     private double price;
     private int stock;
 
-    // Getters and setters
+
     public Long getId() {
         return id;
     }

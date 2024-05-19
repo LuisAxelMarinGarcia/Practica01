@@ -16,7 +16,7 @@
     <properties>
         <java.version>17</java.version>
         <version.mapstruct>1.5.2.Final</version.mapstruct>
-        <version.mapstruct-lombok>0.2.0</version.mapstruct-lombok>
+        <version.mapstruct-lombok>1.18.20</version.mapstruct-lombok>
     </properties>
     <dependencies>
         <dependency>
@@ -55,6 +55,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -67,6 +68,10 @@
             <artifactId>mapstruct-processor</artifactId>
             <version>1.4.2.Final</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
         </dependency>
     </dependencies>
 

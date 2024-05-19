@@ -3,8 +3,19 @@ from sqlalchemy.orm import Session
 from app.core.schemas.order import OrderCreate, OrderUpdate, Order
 from app.core.services.order_service import OrderService
 from app.infrastructure.database import get_db
+import aio_pika
 
 router = APIRouter()
+
+async def send_event(order_id: int, status: str):
+    connection = await aio_pika.connect_robust("amqp://guest:guest@localhost/")
+    async with connection:
+        routing_key = "order_status"
+        channel = await connection.channel()
+        await channel.default_exchange.publish(
+            aio_pika.Message(body=f"{order_id},{status}".encode()),
+            routing_key=routing_key,
+        )
 
 @router.post("/", response_model=Order)
 def create_order(order: OrderCreate, db: Session = Depends(get_db)):
@@ -20,3 +31,4 @@ def update_order_status(order_id: int, status: OrderUpdate, db: Session = Depend
     if not order:
         raise HTTPException(status_code=404, detail="Order not found")
     return order
+
